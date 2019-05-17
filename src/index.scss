@@ -1,0 +1,90 @@
+body {
+  display: flex;
+  text-align: center;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  justify-content: space-around;
+  cursor: url(https://i.imgur.com/jzaIhk6.png), auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+}
+
+.page-content {
+  max-width: 500px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+img {
+  width: 12vh;
+  padding: 10%
+}
+
+.btn {
+  cursor: url(https://i.imgur.com/MnIreJo.png), auto;
+  background: #92CD41;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 1rem;
+  margin: 20px;
+  padding: 20px;
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none; 
+  color: white;
+  box-shadow: inset -4px -4px 0px 0px #4AA52E;
+  &:hover,
+  &:focus {
+      background: #76c442;
+      box-shadow: inset (-4px*1.5) (-4px*1.5) 0px 0px #4AA52E;
+  }
+
+  &:active {
+      box-shadow: inset 4px 4px 0px 0px #4AA52E;
+  }
+
+  &:before,
+  &:after {
+  content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-sizing: content-box;
+  }
+
+  &:before {
+      top: -6px;
+      left: 0;
+      border-top: 6px black solid;
+      border-bottom: 6px black solid;
+  }
+
+  &:after {
+      left: -6px;
+      top: 0;
+      border-left: 6px black solid;
+      border-right: 6px black solid;
+  }
+
+}
+
+a, a:hover, a:active, a:visited, a:focus {
+  text-decoration:none;
+}
