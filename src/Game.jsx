@@ -26,7 +26,7 @@ class Game extends Component {
       () => {
         setTimeout(() => {
           this.setState({ isDelayElapsed: true })
-        }, 1000)
+        }, 600)
       }
     );
   }
