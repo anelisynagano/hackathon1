@@ -11,13 +11,15 @@ const gameImages = [
   { "name": "scissors", "url": "https://i.imgur.com/XfMevXT.png" },
 ]
 
-const randomImage = gameImages[Math.floor(Math.random()*gameImages.length)];
 const initialState = { selectedSymbol: {}, isDelayElapsed: false };
 
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.state = initialState  
+    this.state = {
+      ...initialState,
+      randomImage: gameImages[Math.floor(Math.random()*gameImages.length)]
+    }
   }
 
   onMarkAsClicked = (clickedSymbol) => {
@@ -32,30 +34,33 @@ class Game extends Component {
   }
 
   resetGame = () => {
-    this.setState(initialState);
+    this.setState({
+      ...initialState,
+      randomImage: gameImages[Math.floor(Math.random()*gameImages.length)]
+     });
   }
 
   render () {
   const checkWinner = () => {
-    if (this.state.selectedSymbol.name === 'scissors' && randomImage.name === 'paper') {
+    if (this.state.selectedSymbol.name === 'scissors' && this.state.randomImage.name === 'paper') {
       return "Player 1 wins!";
     }
-    if (this.state.selectedSymbol.name === 'paper' && randomImage.name === 'rock') {
+    if (this.state.selectedSymbol.name === 'paper' && this.state.randomImage.name === 'rock') {
       return "Player 1 wins!";
     }
-    if (this.state.selectedSymbol.name === 'rock' && randomImage.name === 'scissors') {
+    if (this.state.selectedSymbol.name === 'rock' && this.state.randomImage.name === 'scissors') {
       return "Player 1 wins!";
     }
-    if (this.state.selectedSymbol.name === randomImage.name){
+    if (this.state.selectedSymbol.name === this.state.randomImage.name){
       return "Draw!";
     }
-    if (this.state.selectedSymbol.name === 'scissors' && randomImage.name === 'rock') {
+    if (this.state.selectedSymbol.name === 'scissors' && this.state.randomImage.name === 'rock') {
       return "Computer won! Try Again!";
     }
-    if (this.state.selectedSymbol.name === 'paper' && randomImage.name === 'scissors') {
+    if (this.state.selectedSymbol.name === 'paper' && this.state.randomImage.name === 'scissors') {
       return "Computer won! Try Again!";
     }
-    if (this.state.selectedSymbol.name === 'rock' && randomImage.name === 'paper') {
+    if (this.state.selectedSymbol.name === 'rock' && this.state.randomImage.name === 'paper') {
       return "Computer won! Try Again!";
     }
   }
@@ -74,7 +79,7 @@ class Game extends Component {
         {
           this.state.selectedSymbol.name && this.state.isDelayElapsed && (
             <div className="column">
-                <ComputerSide images={gameImages} handleClickSymbol={() => {}} selectedSymbol={randomImage}/>
+                <ComputerSide images={gameImages} handleClickSymbol={() => {}} selectedSymbol={this.state.randomImage}/>
             </div>
           )
         }
